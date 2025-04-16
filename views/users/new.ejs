@@ -1,0 +1,32 @@
+<div class="data-form">
+    <form action="/users/create" method="POST">
+    <h2>Créer un nouvel utilisateur:</h2>
+    <div class="form-group">
+    <label for="inputFirstName">Prénom</label>
+    <input type="text" name="first" id="inputFirstName" class="form-control"
+    placeholder="Prénom" autofocus>
+    </div>
+    <div class="form-group">
+    <label for="inputLastName">Nom</label>
+    <input type="text" name="last" id="inputLastName" class="form-control"
+    placeholder="Nom">
+    </div>
+    <div class="form-group">
+    <label for="inputPassword">Mot de passe</label>
+    <input type="password" name="password" id="inputPassword" class="form-control"
+    placeholder="Mot de passe" required>
+    </div>
+    <div class="form-group">
+    
+    <label for="inputEmail">Adresse email</label>
+    <input type="email" name="email" id="inputEmail" class="form-control"
+    placeholder="Adresse email" required>
+    </div>
+    <div class="form-group">
+    <label for="inputZipCode">Code Postal</label>
+    <input type="text" name="zipCode" id="inputZipCode" pattern="\d{5}" class="form-control"
+    placeholder="Code Postal" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Créer</button>
+    </form>
+    </div>

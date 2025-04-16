@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Academy - <%= typeof pageTitle !== 'undefined' ? pageTitle : 'Page sans titre' %></title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/images/logo.jpg" alt="AI Academy Logo" width="100">
+            <h1>AI Academy</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/about">À propos</a></li>
+                <li><a href="/courses">Cours</a></li>
+                <li><a href="/users">Utilisateurs</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/subscribers">Abonnés</a></li>
+                <li><a href="/subscribers/new">S'abonner</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <%- body %>
+    </main>
+    
+    <% if (typeof success_msg !== 'undefined' && success_msg) { %>
+        <div class="notification success">
+            <%= success_msg %>
+        </div>
+    <% } %>
+    
+    <% if (typeof error_msg !== 'undefined' && error_msg) { %>
+        <div class="notification error">
+            <%= error_msg %>
+        </div>
+    <% } %>
+    
+    <footer>
+        <p>&copy; <%= new Date().getFullYear() %> AI Academy. Tous droits réservés.</p>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

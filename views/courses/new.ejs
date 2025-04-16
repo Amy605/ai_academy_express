@@ -1,0 +1,27 @@
+<div class="data-form">
+    <form action="/courses/create" method="POST">
+    <h2>Créer un nouveau cours:</h2>
+    <div class="form-group">
+    <label for="inputTitle">Titre</label>
+    <input type="text" name="title" id="inputTitle" class="form-control" placeholder="Titre du
+    cours" autofocus required>
+    </div>
+    <div class="form-group">
+    <label for="inputDescription">Description</label>
+    <textarea name="description" id="inputDescription" class="form-control"
+    placeholder="Description du cours" required></textarea>
+    </div>
+    <div class="form-group">
+    <label for="inputMaxStudents">Nombre maximum d'étudiants</label>
+    
+    <input type="number" name="maxStudents" id="inputMaxStudents" class="form-control"
+    placeholder="Nombre maximum d'étudiants" min="0">
+    </div>
+    <div class="form-group">
+    <label for="inputCost">Coût</label>
+    <input type="number" name="cost" id="inputCost" class="form-control" placeholder="Coût
+    du cours" min="0">
+    </div>
+    <button type="submit" class="btn btn-primary">Créer</button>
+    </form>
+    </div>

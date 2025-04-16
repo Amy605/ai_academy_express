@@ -1,0 +1,38 @@
+<h2>Liste des utilisateurs</h2>
+<table class="table" border="1">
+<thead>
+<tr>
+<th>Nom</th>
+<th>Email</th>
+<th>Code Postal</th>
+<th>Modifier</th>
+<th>Supprimer</th>
+</tr>
+
+</thead>
+<tbody>
+<% users.forEach(user => { %>
+<tr>
+<td>
+<a href="<%= `/users/${user._id}` %>">
+<%= user.fullName %>
+</a>
+</td>
+<td><%= user.email %></td>
+<td><%= user.zipCode %></td>
+<td>
+<a href="<%= `/users/${user._id}/edit` %>">
+Modifier
+</a>
+</td>
+<td>
+<a href="<%= `/users/${user._id}/delete?_method=DELETE` %>"
+onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur?')">
+Supprimer
+</a>
+</td>
+</tr>
+<% }); %>
+</tbody>
+</table>
+<a href="/users/new" class="btn btn-primary">Créer un nouvel utilisateur</a>

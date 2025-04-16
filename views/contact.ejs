@@ -1,0 +1,42 @@
+<h2>Contactez-nous</h2>
+<p>Remplissez le formulaire ci-dessous pour nous contacter ou vous inscrire à un cours.</p>
+
+<% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+  <div class="alert-error">
+    <h3>Veuillez corriger :</h3>
+    <ul>
+      <% errors.forEach(error => { %>
+        <li><%= error %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
+
+<form action="/contact" method="post">
+  <div class="form-group <%= (typeof errors !== 'undefined' && errors.some(e => e.includes('nom'))) ? 'has-error' : '' %>">
+    <label>Nom complet *</label>
+    <input type="text" name="name" value="<%= typeof formData !== 'undefined' ? formData.name : '' %>" required>
+  </div>
+
+  <div class="form-group <%= (typeof errors !== 'undefined' && errors.some(e => e.includes('email'))) ? 'has-error' : '' %>">
+    <label>Email *</label>
+    <input type="email" name="email" value="<%= typeof formData !== 'undefined' ? formData.email : '' %>" required>
+  </div>
+
+  <div class="form-group <%= (typeof errors !== 'undefined' && errors.some(e => e.includes('cours'))) ? 'has-error' : '' %>">
+    <label>Cours d'intérêt *</label>
+    <select name="course" required>
+      <option value="">-- Sélectionnez --</option>
+      <option value="intro-ia" <%= (typeof formData !== 'undefined' && formData.course === 'intro-ia') ? 'selected' : '' %>>Introduction à l'IA</option>
+      <option value="machine-learning" <%= (typeof formData !== 'undefined' && formData.course === 'machine-learning') ? 'selected' : '' %>>Machine Learning</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Message</label>
+    <textarea name="message" rows="5"><%= typeof formData !== 'undefined' ? formData.message : '' %></textarea>
+    <small>Maximum 500 caractères</small>
+  </div>
+
+  <button type="submit" class="btn">Envoyer</button>
+</form>

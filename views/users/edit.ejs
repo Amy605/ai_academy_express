@@ -1,0 +1,31 @@
+<div class="data-form">
+    <form method="POST" action="<%= `/users/${user._id}/update?_method=PUT` %>">
+    <h2>Modifier l'utilisateur:</h2>
+    <div class="form-group">
+    <label for="inputFirstName">Prénom</label>
+    <input type="text" name="first" id="inputFirstName" class="form-control" value="<%=
+    user.name.first %>" placeholder="Prénom" autofocus>
+    </div>
+    <div class="form-group">
+    <label for="inputLastName">Nom</label>
+    <input type="text" name="last" id="inputLastName" class="form-control" value="<%=
+    user.name.last %>" placeholder="Nom">
+    </div>
+    <div class="form-group">
+    <label for="inputPassword">Mot de passe</label>
+    <input type="password" name="password" id="inputPassword" class="form-control"
+    value="<%= user.password %>" placeholder="Mot de passe" required>
+    </div>
+    <div class="form-group">
+    <label for="inputEmail">Adresse email</label>
+    <input type="email" name="email" id="inputEmail" class="form-control" value="<%=
+    user.email %>" placeholder="Adresse email" required>
+    </div>
+    <div class="form-group">
+    <label for="inputZipCode">Code Postal</label>
+    <input type="text" name="zipCode" id="inputZipCode" pattern="\d{5}" class="form-control"
+    value="<%= user.zipCode %>" placeholder="Code Postal" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Mettre à jour</button>
+    </form>
+    </div>

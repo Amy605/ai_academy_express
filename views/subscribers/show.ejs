@@ -1,0 +1,13 @@
+<h2>Détails de l'abonné</h2>
+<div class="subscriber-details">
+<h3><%= subscriber.name %></h3>
+<p><strong>Email:</strong> <%= subscriber.email %></p>
+<p><strong>Code Postal:</strong> <%= subscriber.zipCode %></p>
+</div>
+<a href="/subscribers" class="btn btn-primary">Retour à la liste</a>
+<form action="/subscribers/<%= subscriber._id %>?_method=DELETE" method="POST">
+    <button type="submit" class="btn btn-danger" 
+            onclick="return confirm('Êtes-vous sûr ?')">
+      Supprimer
+    </button>
+  </form>

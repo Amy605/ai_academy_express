@@ -1,0 +1,10 @@
+<section class="faq-section">
+    <div class="faq-grid">
+        <% faqs.forEach(faq => { %>
+            <div class="faq-card">
+                <h3><%= faq.question %></h3>
+                <p><%= faq.answer %></p>
+            </div>
+        <% }); %>
+    </div>
+</section>
