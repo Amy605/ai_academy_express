@@ -1,0 +1,112 @@
+<%- include('../layouts/header') %>
+
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Votre Token API</h1>
+    <a href="/users/<%= currentUser._id %>" class="btn btn-outline-primary">
+      <i class="bi bi-arrow-left"></i> Retour au profil
+    </a>
+  </div>
+  
+  <% if (token) { %>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="card-title mb-0">Votre token personnel</h4>
+          <span class="badge bg-info">Expire dans 30 jours</span>
+        </div>
+        
+        <div class="input-group mb-3">
+          <input type="text" 
+                 class="form-control font-monospace" 
+                 id="apiToken" 
+                 value="<%= token %>" 
+                 readonly
+                 aria-label="Token API">
+          <button class="btn btn-primary" 
+                  type="button" 
+                  onclick="copyToken()"
+                  aria-label="Copier le token">
+            <i class="bi bi-clipboard"></i> Copier
+          </button>
+        </div>
+        
+        <div class="alert alert-warning d-flex align-items-center">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>
+          <div>
+            <strong>Important :</strong> Ce token donne accès à votre compte. Ne le partagez jamais.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-4 shadow-sm">
+      <div class="card-body">
+        <h4 class="card-title mb-4">Comment utiliser votre token</h4>
+        
+        <div class="mb-4">
+          <h5><i class="bi bi-1-circle me-2"></i>Dans les en-têtes HTTP :</h5>
+          <pre class="p-3 bg-light rounded"><code>Authorization: Bearer <%= token %></code></pre>
+        </div>
+        
+        <div class="mb-4">
+          <h5><i class="bi bi-2-circle me-2"></i>Avec Fetch API :</h5>
+          <pre class="p-3 bg-light rounded"><code>fetch('/api/courses', {
+  headers: {
+    'Authorization': 'Bearer <%= token %>',
+    'Content-Type': 'application/json'
+  }
+})</code></pre>
+        </div>
+
+        <div>
+          <h5><i class="bi bi-3-circle me-2"></i>Avec cURL :</h5>
+          <pre class="p-3 bg-light rounded"><code>curl -H "Authorization: Bearer <%= token %>" \
+     -H "Content-Type: application/json" \
+     http://localhost:3000/api/courses</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-4">
+      <a href="/users/refresh-token" 
+         class="btn btn-danger px-4"
+         onclick="return confirm('Êtes-vous sûr de vouloir générer un nouveau token ? L\'ancien ne fonctionnera plus.')">
+        <i class="bi bi-arrow-repeat me-2"></i> Régénérer le token
+      </a>
+    </div>
+  <% } else { %>
+    <div class="alert alert-danger">
+      <i class="bi bi-exclamation-octagon-fill me-2"></i>
+      Aucun token disponible. Veuillez en générer un nouveau.
+    </div>
+  <% } %>
+</div>
+
+<script>
+  function copyToken() {
+    const tokenInput = document.getElementById('apiToken');
+    tokenInput.select();
+    tokenInput.setSelectionRange(0, 99999); // Pour mobile
+    document.execCommand('copy');
+    
+    // Notification Toast
+    const toastEl = document.getElementById('copyToast');
+    const toast = bootstrap.Toast.getOrCreateInstance(toastEl);
+    toast.show();
+    
+    // Désactiver le bouton temporairement
+    const copyBtn = document.querySelector('[onclick="copyToken()"]');
+    copyBtn.innerHTML = '<i class="bi bi-check2"></i> Copié !';
+    copyBtn.classList.add('btn-success');
+    copyBtn.classList.remove('btn-primary');
+    
+    setTimeout(() => {
+      copyBtn.innerHTML = '<i class="bi bi-clipboard"></i> Copier';
+      copyBtn.classList.add('btn-primary');
+      copyBtn.classList.remove('btn-success');
+    }, 2000);
+  }
+</script>
+
+<%- include('../layouts/footer') %>

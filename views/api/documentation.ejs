@@ -1,0 +1,94 @@
+<h1>Documentation de l'API AI Academy</h1>
+<div class="api-doc">
+<h2>Introduction</h2>
+<p>
+    Bienvenue dans la documentation de l'API AI Academy. Cette API vous permet d'interagir
+    avec les données de notre application, y compris les utilisateurs, les cours et les abonnés.
+    </p>
+    <h2>Authentification</h2>
+    <p>
+    Toutes les requêtes à l'API nécessitent un token d'authentification. Pour obtenir un token,
+    vous pouvez :
+    </p>
+    <ol>
+    <li>Vous connecter à l'application AI Academy et accéder à la page "Mon Token API" depuis
+    votre profil.</li>
+    <li>Faire une requête POST à <code>/api/login</code> avec vos identifiants.</li>
+    </ol>
+    <h3>Exemple de requête d'authentification :</h3>
+    <pre>
+    POST /api/login
+    Content-Type: application/json
+    {
+    "email": "votre-email@exemple.com",
+    "password": "votre-mot-de-passe"
+    }
+    </pre>
+    <h3>Réponse :</h3>
+    <pre>
+    {
+    "success": true,
+    "token": "votre-token-jwt",
+    "user": {
+    "id": "id-utilisateur",
+    "name": "Nom Complet",
+    "email": "votre-email@exemple.com"
+    }
+    }
+    </pre>
+    <h2>Utilisation du token</h2>
+    <p>
+    Incluez le token dans chaque requête de l'une des façons suivantes :
+    </p>
+    <ul>
+    <li>En-tête HTTP : <code>Authorization: Bearer votre-token</code></li>
+    <li>Paramètre de requête : <code>?apiToken=votre-token</code></li>
+    </ul>
+    <h2>Points de terminaison (Endpoints)</h2>
+<h3>Utilisateurs</h3>
+<ul>
+<li><code>GET /api/users</code> - Obtenir la liste de tous les utilisateurs</li>
+<li><code>GET /api/users/:id</code> - Obtenir les détails d'un utilisateur spécifique</li>
+<li><code>POST /api/users</code> - Créer un nouvel utilisateur</li>
+<li><code>PUT /api/users/:id</code> - Mettre à jour un utilisateur existant</li>
+<li><code>DELETE /api/users/:id</code> - Supprimer un utilisateur</li>
+</ul>
+<h3>Cours</h3>
+<ul>
+<li><code>GET /api/courses</code> - Obtenir la liste de tous les cours</li>
+<li><code>GET /api/courses/:id</code> - Obtenir les détails d'un cours spécifique</li>
+<li><code>POST /api/courses</code> - Créer un nouveau cours</li>
+<li><code>PUT /api/courses/:id</code> - Mettre à jour un cours existant</li>
+<li><code>DELETE /api/courses/:id</code> - Supprimer un cours</li>
+</ul>
+<h3>Abonnés</h3>
+<ul>
+<li><code>GET /api/subscribers</code> - Obtenir la liste de tous les abonnés</li>
+<li><code>GET /api/subscribers/:id</code> - Obtenir les détails d'un abonné spécifique</li>
+<li><code>POST /api/subscribers</code> - Créer un nouvel abonné</li>
+<li><code>PUT /api/subscribers/:id</code> - Mettre à jour un abonné existant</li>
+<li><code>DELETE /api/subscribers/:id</code> - Supprimer un abonné</li>
+</ul>
+<h2>Format des réponses</h2>
+<p>
+Toutes les réponses sont au format JSON avec la structure suivante :
+</p>
+<pre>
+{
+"status": 200,
+"data": {
+// Les données demandées
+}
+}
+</pre>
+<h2>Gestion des erreurs</h2>
+<p>
+En cas d'erreur, l'API renvoie :
+</p>
+<pre>
+    {
+        "status": 500, // ou un autre code d'erreur HTTP approprié
+        "message": "Description de l'erreur"
+        }
+        </pre>
+        </div>

@@ -1,0 +1,24 @@
+<div class="auth-form">
+    <h2>Connexion</h2>
+    <% if (flashMessages) { %>
+    <% if (flashMessages.error) { %>
+    <div class="flash error"><%= flashMessages.error %></div>
+    <% } %>
+    <% } %>
+    <form action="/login" method="POST">
+    <div class="form-group">
+    <label for="inputEmail">Email</label>
+    <input type="email" name="email" id="inputEmail" class="form-control"
+    placeholder="Email" required autofocus>
+    </div>
+    <div class="form-group">
+    <label for="inputPassword">Mot de passe</label>
+    <input type="password" name="password" id="inputPassword" class="form-control"
+    placeholder="Mot de passe" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Se connecter</button>
+    </form>
+    <div class="auth-links">
+    <p>Pas encore de compte? <a href="/signup">S'inscrire</a></p>
+    </div>
+    </div>
