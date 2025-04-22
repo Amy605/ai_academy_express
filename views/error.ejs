@@ -1,5 +1,5 @@
-<div class="error-container">
-    <h2>Erreur <%= errorCode %></h2>
-    <p><%= message %></p>
+<<div class="error-container">
+    <h2>Erreur <%= typeof errorCode !== 'undefined' ? errorCode : 'Inconnue' %></h2>
+    <p><%= typeof message !== 'undefined' ? message : 'Une erreur est survenue' %></p>
     <a href="/" class="btn">Retour à l'accueil</a>
 </div>

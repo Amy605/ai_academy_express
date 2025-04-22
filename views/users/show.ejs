@@ -1,27 +1,40 @@
 <h1>Profil utilisateur: <%= user.fullName %></h1>
+
 <table class="table" border="1">
-<tr>
-<th>Nom complet</th>
-<td><%= user.fullName %></td>
-</tr>
-<tr>
-<th>Email</th>
-<td><%= user.email %></td>
-</tr>
-<tr>
-<th>Code Postal</th>
-<td><%= user.zipCode %></td>
-</tr>
+  <tr>
+    <th>Nom complet</th>
+    <td><%= user.fullName %></td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td><%= user.email %></td>
+  </tr>
+  <tr>
+    <th>Code Postal</th>
+    <td><%= user.zipCode %></td>
+  </tr>
 </table>
+
 <% if (user.subscribedAccount) { %>
-<h4>Cet utilisateur est lié à un compte abonné.</h4>
+  <h4>Cet utilisateur est lié à un compte abonné.</h4>
 <% } %>
-<div class="button-group">
-<a href="/users" class="btn btn-primary">Tous les utilisateurs</a>
-<a href="<%= `/users/${user._id}/edit` %>" class="btn btn-info">Modifier</a>
-<a href="<%= `/users/${user._id}/delete?_method=DELETE` %>"
-onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur?')"
-class="btn btn-danger">
-Supprimer
-</a>
+
+<div class="button-group mt-4">
+  <a href="/users" class="btn btn-primary">
+    <i class="fas fa-users"></i> Tous les utilisateurs
+  </a>
+  
+  <a href="<%= `/users/${user._id}/edit` %>" class="btn btn-info">
+    <i class="fas fa-edit"></i> Modifier
+  </a>
+  
+  <a href="/users/api-token" class="btn btn-secondary">
+    <i class="fas fa-key"></i> Mon Token API
+  </a>
+  
+  <a href="<%= `/users/${user._id}/delete?_method=DELETE` %>"
+     onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur?')"
+     class="btn btn-danger">
+    <i class="fas fa-trash-alt"></i> Supprimer
+  </a>
 </div>
